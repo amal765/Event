@@ -1,0 +1,70 @@
+<% @events.each do |event| %>
+<div class="row">
+  <div class="box">
+    <div class="box-header with-border">
+      <h3 class="box-title"><%= event.name %> @<%= event.address%></h3>
+
+      <div class="box-tools pull-right">
+        <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
+                title="Collapse">
+          <i class="fa fa-minus"></i></button>
+        <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
+          <i class="fa fa-times"></i></button>
+      </div>
+    </div>
+    <div class="box-body">
+      <div class="row">
+        <div class="col-xs-4">
+          <%= image_tag(event.image) %>
+        </div>
+        <div class="col-xs-8">
+          <div class="row">
+            <%= event.description %>
+          </div>
+          <div class="row">
+            <p class="text-muted">Contact: <%= event.mobile %> </p>
+          </div>
+        </div>
+      </div>
+
+
+
+          <h4 class="box-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#<%= event.name%>">
+              About
+            </a>
+          </h4>
+
+        <div id="<%= event.name%>" class="panel-collapse collapse">
+          <div class="box-body">
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3
+            wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
+            eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla
+            assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred
+            nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer
+            farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
+            labore sustainable VHS.
+          </div>
+        </div>
+
+
+    </div>
+    <!-- /.box-body -->
+    <div class="box-footer">
+      <div class="col-xs-9">
+        <div class="row">
+          <span>Starting time: <%= event.start.strftime("%I:%M%p") %></span>
+        </div>
+        <div class="row">
+          <span>From: <%= event.from.strftime("%d-%m-%Y") %> - To: <%= event.to.strftime("%d-%m-%Y") %> </span>
+        </div>
+      </div>
+      <div class="col-xs-3">
+      </div>
+    </div>
+    <!-- /.box-footer-->
+  </div>
+</div>
+
+<% end %>
+

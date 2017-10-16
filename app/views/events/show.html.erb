@@ -1,0 +1,56 @@
+<body class="hold-transition lockscreen skin-blue" >
+<!-- Automatic element centering -->
+  <header class="main-header ">
+    <a href="/" class="logo">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini"><b>A</b>LT</span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg"><b>Admin</b>LTE</span>
+    </a>
+     <nav class="navbar navbar-static-top" role="navigation">
+        <div class="navbar-custom-menu">
+          <ul class="nav navbar-nav">
+            <li> </li>
+
+          </ul>
+        </div>
+      </nav>
+  </header>
+  <div class="lockscreen-logo">
+    <%= link_to "Admin LTE", new_user_session_path %>
+  </div>
+  <div class=""   style="height: auto; min-height: 570px;">
+    <div class="row">
+      <div class="col-xs-3"></div>
+      <div class="col-xs-6">
+        <div class="sidebar-form ">
+          <%= search_form_for @search, url: search_events_path,remote: true, method: :put  do |f| %>
+            <div class="input-group">
+              <%= f.text_field :address, class: "form-control geo-input" %>
+              <span class="input-group-btn">
+                <%= button_tag type: 'submit', class: "btn btn-flat" do %>
+                  <i class="fa fa-search"></i>
+                <% end %>
+              </span>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-xs-3"></div>
+    </div>
+    <div class="row">
+      <div class="col-xs-2"></div>
+      <div class="col-xs-7">
+        <div class="eventBox">
+          <%= render 'user_events' %>
+        </div>
+      </div>
+      <div class="col-xs-3"></div>
+    </div>
+    <!-- /.lockscreen-item -->
+    </div>
+    <footer style: "min-height= 560px"; >
+      <%= render 'layouts/footer' %>
+    </footer>
+
+</body>

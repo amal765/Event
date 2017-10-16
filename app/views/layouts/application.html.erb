@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Profile</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'http://maps.googleapis.com/maps/api/js?v=3&AIzaSyBPkExHJt-bGA9P03bveHJ140IVa_6Sd8c&sensor=false&libraries=places' %>
+  </head>
+
+  <body>
+    <%= yield %>
+  </body>
+</html>

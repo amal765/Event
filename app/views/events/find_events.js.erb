@@ -1,0 +1,5 @@
+<% if signed_in? %>
+  $('.eventBox').html("<%= j render partial: 'all_events' %>");
+<% else %>
+  $('.eventBox').html("<%= j render partial: 'search_results' %>");
+<% end %>
