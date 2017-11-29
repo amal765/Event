@@ -6,7 +6,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @q = Event.search(params[:q])
-    @event = Event.last
     @events = @user.events
   end
 

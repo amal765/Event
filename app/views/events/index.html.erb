@@ -29,17 +29,20 @@
             <section class="content">
             <!-- Default box -->
             <div class="eventBox">
-            <%= render 'all_events' %>
+              <%= render 'all_events' %>
             </div>
-            <%= will_paginate @events %>
+            <div id="infinite-scrolling">
+              <%= will_paginate @events %>
+            </div>
             <!-- /.box -->
             </section>
           </div>
+
 <!--           event creating form
  -->      <div class="col-xs-3">
             <%= form_for(@event, validate: true, remote: true, id: "eventCreator") do |f|%>
               <div class="form-group has-feedback">
-                <%= f.text_field :name, autofocus: true,class: "form-control", placeholder: "Event name" %>
+                <%= f.text_field :name,class: "form-control", placeholder: "Event name" %>
                 <span class="glyphicon glyphicon-asterisk form-control-feedback"></span>
               </div>
 
@@ -83,14 +86,13 @@
               </div>
 
               <div class="form-group has-feedback">
-                <%= f.text_field :to,class: "form-control", placeholder: "To" %>
+                <%= f.date_field :to,class: "form-control datepicker", placeholder: "To" %>
                 <span class="glyphicon glyphicon-th form-control-feedback"></span>
               </div>
 
               <div class="form-group has-feedback">
                 <%= f.submit "Create event", class: "btn btn-warning btn-block btn-flat" %>
               </div>
-
             <% end %>
           </div>
         </div>
@@ -114,4 +116,13 @@
     <div class="control-sidebar-bg"></div>
   </div>
 </div>
+<script type="text/javascript">
+  $(function () {
 
+
+    //Date picker
+    $('.datepicker').datepicker({ dateFormat: 'dd-mm-yy'});
+    //Timepicker
+
+  })
+</script>

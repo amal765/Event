@@ -17,4 +17,15 @@ class Event < ApplicationRecord
       false
     end
   end
+
+  def expiry
+    byebug
+    @events = Event.all
+    @events.each do |event|
+      if event.to.past?
+        event.destroy
+      end
+    end
+  end
+
 end

@@ -17,8 +17,10 @@
 //= require js/adminlte.min.js
 //= require iCheck/icheck.min.js
 //= require timepicker/bootstrap-timepicker.min.js
+//= require bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js
 //= require jquery.geocomplete
 //= require rails.validations
+//= require pagination.js
 $(function() {
   $(".geo-input").geocomplete();
 });

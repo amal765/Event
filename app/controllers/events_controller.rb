@@ -18,7 +18,7 @@ class EventsController < ApplicationController
 
   def show
     @search = Event.search(params[:q])
-    @events = Event.limit(4).order("created_at DESC")
+    @events = Event.all.where(status: true).limit(4).order("created_at DESC")
   end
 
   def edit
@@ -32,9 +32,14 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
     @event.update(event_params)
-    @events = Event.all.where(status: true)
     respond_to do |format|
-      format.js { render 'category_events.js.erb'}
+      if current_user.admin?
+        @events = Event.all.where(status: true)
+        format.js
+      else
+        @events = current_user.events
+        format.js
+      end
     end
   end
 
@@ -55,7 +60,7 @@ class EventsController < ApplicationController
         @events = Event.all.where(status: false)
         format.js
       else
-        @events = Event.all.where(category_id: params[:category_id])
+        @events = Event.all.where(category_id: params[:category_id], status: true)
         format.js
       end
     end
