@@ -9,8 +9,16 @@ class EventsController < ApplicationController
   end
 
   def create
+    account_sid = 'ACf134e5f716876998243f8f7b6da5c49b'
+    auth_token = 'c4d9267e54bc7cab38cdaa0c2278e860'
     @event = Event.create(event_params)
     @events = Event.all.where(status: true)
+    @client = Twilio::REST::Client.new(account_sid, auth_token)
+    @client.messages.create(
+      from: '+14438637462',
+      to: '+919567521040',
+      body: 'Phantom Menace was clearly the best of the prequel trilogy.'
+    )
     respond_to do |format|
       format.js
     end

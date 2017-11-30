@@ -35,6 +35,7 @@ gem 'omniauth-google'
 gem 'omniauth-facebook'
 gem 'client_side_validations'
 gem 'twilio-ruby', '~> 5.5.0'
+gem 'whatsapi', :git => 'https://github.com/ongair/whatsapi.git'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password

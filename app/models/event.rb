@@ -4,7 +4,6 @@ class Event < ApplicationRecord
   validates :address, presence: true
   validates :name,presence: true
   validates :mobile,presence: true,  numericality: { only_integer: true }
-  validates :start, presence: true
   validates :from, presence: true
   geocoded_by :address
   after_validation :geocode
