@@ -34,12 +34,15 @@ gem 'omniauth'
 gem 'omniauth-google'
 gem 'omniauth-facebook'
 gem 'client_side_validations'
+gem 'twilio-ruby', '~> 5.5.0'
+gem 'whatsapi', :git => 'https://github.com/ongair/whatsapi.git'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 # Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+gem 'whenever', require: false
+gem 'capistrano-rails', group: :development
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

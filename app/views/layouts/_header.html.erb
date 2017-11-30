@@ -151,7 +151,9 @@
                 <!-- Menu Footer-->
                 <li class="user-footer">
                   <div class="pull-left">
+                  <% unless @user.admin? %>
                     <%= link_to "Profile", user_path(@user), class: "btn btn-default btn-flat" %>
+                  <% end %>
                   </div>
                   <div class="pull-right">
                 <%= link_to "Sign out", destroy_user_session_path, class: "btn btn-default btn-flat", method: :delete %>

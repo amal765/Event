@@ -4,7 +4,6 @@ class Event < ApplicationRecord
   validates :address, presence: true
   validates :name,presence: true
   validates :mobile,presence: true,  numericality: { only_integer: true }
-  validates :start, presence: true
   validates :from, presence: true
   geocoded_by :address
   after_validation :geocode
@@ -17,4 +16,15 @@ class Event < ApplicationRecord
       false
     end
   end
+
+  def expiry
+    byebug
+    @events = Event.all
+    @events.each do |event|
+      if event.to.past?
+        event.destroy
+      end
+    end
+  end
+
 end

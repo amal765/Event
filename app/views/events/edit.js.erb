@@ -1,1 +1,5 @@
-$('.eventBox').html("<%= j render partial: 'edit_event' %>");
+<% if current_user.admin? %>
+  $('.eventBox').html("<%= j render partial: 'edit_event' %>");
+<% else %>
+  $('.userEventBox').html("<%= j render partial: 'edit_event' %>");
+<% end %>

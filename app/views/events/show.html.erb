@@ -10,8 +10,8 @@
      <nav class="navbar navbar-static-top" role="navigation">
         <div class="navbar-custom-menu">
           <ul class="nav navbar-nav">
-            <li> </li>
-
+            <li><%= link_to "Log in",new_user_session_path %></li>
+            <li><%= link_to "Register",new_user_registration_path %> </li>
           </ul>
         </div>
       </nav>
@@ -41,6 +41,11 @@
     <div class="row">
       <div class="col-xs-2"></div>
       <div class="col-xs-7">
+          <h1>
+          Events
+          <small>all over</small>
+          </h1>
+          <br>
         <div class="eventBox">
           <%= render 'user_events' %>
         </div>

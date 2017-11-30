@@ -9,8 +9,16 @@ class EventsController < ApplicationController
   end
 
   def create
+    account_sid = 'ACf134e5f716876998243f8f7b6da5c49b'
+    auth_token = 'c4d9267e54bc7cab38cdaa0c2278e860'
     @event = Event.create(event_params)
     @events = Event.all.where(status: true)
+    @client = Twilio::REST::Client.new(account_sid, auth_token)
+    @client.messages.create(
+      from: '+14438637462',
+      to: '+919567521040',
+      body: 'Phantom Menace was clearly the best of the prequel trilogy.'
+    )
     respond_to do |format|
       format.js
     end
@@ -18,7 +26,7 @@ class EventsController < ApplicationController
 
   def show
     @search = Event.search(params[:q])
-    @events = Event.limit(4).order("created_at DESC")
+    @events = Event.all.where(status: true).limit(4).order("created_at DESC")
   end
 
   def edit
@@ -32,9 +40,14 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
     @event.update(event_params)
-    @events = Event.all.where(status: true)
     respond_to do |format|
-      format.js { render 'category_events.js.erb'}
+      if current_user.admin?
+        @events = Event.all.where(status: true)
+        format.js
+      else
+        @events = current_user.events
+        format.js
+      end
     end
   end
 
@@ -55,7 +68,7 @@ class EventsController < ApplicationController
         @events = Event.all.where(status: false)
         format.js
       else
-        @events = Event.all.where(category_id: params[:category_id])
+        @events = Event.all.where(category_id: params[:category_id], status: true)
         format.js
       end
     end

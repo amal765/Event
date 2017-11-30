@@ -1,0 +1,7 @@
+$('.eventBox').append('<%= j render partial: 'all_events', events: @events %>');
+<% if @events.next_page %>
+  $('.pagination').append('<%= j will_paginate(render partial: 'all_events', events: @events) %>');
+<% else %>
+  $(window).off('scroll');
+  $('.pagination').remove();
+<% end %>
